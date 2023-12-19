@@ -1,5 +1,4 @@
 import json
-
 from istorage import IStorage
 
 
@@ -10,14 +9,16 @@ class StorageJson(IStorage):
     def list_movies(self):
         with open(self.file_path, "r") as handle:
             movies = json.load(handle)
-        for name, attribute in movies.items():
-            print(f"{name} ({attribute[1]}): {attribute[0]}")
+        return movies
 
     def add_movie(self, title, year, rating, poster):
-        ...
+        movies = self.list_movies()
+        if title in movies:
+            print(f"Movie {title} already exist!")
+            return
 
     def delete_movie(self, title):
-        ...
+        pass
 
     def update_movie(self, title, rating):
-        ...
+        pass
