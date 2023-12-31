@@ -3,6 +3,7 @@ from istorage import IStorage
 
 
 class StorageJson(IStorage):
+
     def __init__(self, file_path: str) -> None:
         self.file_path = file_path
 
@@ -16,14 +17,14 @@ class StorageJson(IStorage):
 
                 For example, the function may return:
                 {
-                  "Titanic": {
-                    "rating": 9,
-                    "year": 1999
-                  },
-                  "..." {
+                  "Titanic": [
+                    9,
+                    1999
+                  ],
+                  "..." [
                     ...
-                  },
-                }
+                  ],
+                ]
                 """
 
         with open(self.file_path, "r") as handle:
