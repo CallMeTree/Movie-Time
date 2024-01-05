@@ -56,7 +56,7 @@ class MovieApp:
         movies = self._storage.list_movies()
         rate_list = []
         for movie in movies:
-            rate_list.append(movies[movie][0])
+            rate_list.append(float(movies[movie][0]))
         print(f"Average rating: {statistics.mean(rate_list)}")
         print(f"Median rating: {statistics.median(rate_list)}")
         for movie, stat in movies.items():
@@ -106,6 +106,7 @@ class MovieApp:
             """
 
         movies = self._storage.list_movies()
+        print(movies)
         output = ""
         for movie, stat in movies.items():
             output += "<li>"
@@ -115,7 +116,7 @@ class MovieApp:
             output += f"<div class='movie-year'>{stat[1]}</dive>\n"
             output += "</div>\n"
             output += "</li>"
-        with open("../index_template.html", "r") as html_file:
+        with open("../res/index_template.html", "r") as html_file:
             html = html_file.read()
         with open("../res/index_template.html", "w") as html_file:
             html_file.write(html.replace("__TEMPLATE_MOVIE_GRID__", output))

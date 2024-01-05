@@ -36,7 +36,7 @@ class StorageCsv(IStorage):
                 data_list.append(row)
             movies = {}
             for data in data_list:
-                movies.update({data['title']: [data['rating'], data['year']]})
+                movies.update({data['title']: [data['rating'], data['year'], data['poster']]})
         return movies
 
     def add_movie(self, title, year, rating, poster):
